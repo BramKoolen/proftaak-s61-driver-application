@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font
+        app:font="@font/gibson_regular"
+        app:fontStyle="normal" />
+    <font
+        app:font="@font/gibson_bold"
+        app:fontStyle="normal" />
+    <font
+        app:font="@font/gibson_regular_italic"
+        app:fontStyle="normal" />
+    <font
+        app:font="@font/gibson_bold_italic"
+        app:fontStyle="normal" />
+</font-family>
