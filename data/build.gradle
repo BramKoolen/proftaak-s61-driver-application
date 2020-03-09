@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        minSdkVersion min_sdk_version
+        targetSdkVersion target_sdk_version
+        versionCode 1
+        versionName version_name
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:29.0.0-alpha3'
+    implementation 'com.android.support:design:29.0.0-alpha1'
+
+    // @Inject
+    implementation "javax.inject:javax.inject:1"
+
+    // Reactive
+    implementation "io.reactivex.rxjava2:rxjava:$reactive_x_version_java"
+    implementation "io.reactivex.rxjava2:rxkotlin:$reactive_x_version_kotlin"
+    implementation "io.reactivex.rxjava2:rxandroid:$reactive_x_version_android"
+
+    // Dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    kapt "com.google.dagger:dagger-android-processor:$dagger_version"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$reactive_x_version_java"
+    implementation "io.reactivex.rxjava2:rxkotlin:$reactive_x_version_kotlin"
+    implementation "io.reactivex.rxjava2:rxandroid:$reactive_x_version_android"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"

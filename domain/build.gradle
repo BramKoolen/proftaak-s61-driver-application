@@ -1,0 +1,22 @@
+apply plugin: 'kotlin'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    // @inject
+    implementation "javax.inject:javax.inject:1"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$reactive_x_version_java"
+    implementation "io.reactivex.rxjava2:rxkotlin:$reactive_x_version_kotlin"
+    implementation "io.reactivex.rxjava2:rxandroid:$reactive_x_version_android"
+
+    // RxJava
+    implementation "io.reactivex.rxjava2:rxjava:$reactive_x_version_java"
+    implementation "io.reactivex.rxjava2:rxkotlin:$reactive_x_version_kotlin"
+    implementation "io.reactivex.rxjava2:rxandroid:$reactive_x_version_android"
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
