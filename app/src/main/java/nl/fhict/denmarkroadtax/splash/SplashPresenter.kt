@@ -27,7 +27,7 @@ class SplashPresenter @Inject constructor(
     }
 
     private fun countDownTimer() {
-        timer = object : CountDownTimer(800, 800) {
+        timer = object : CountDownTimer(3000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 // no opt
             }
@@ -44,9 +44,9 @@ class SplashPresenter @Inject constructor(
 
     private fun isUserLoggedInSuccess(isUserLoggedIn: Boolean) {
         if (isUserLoggedIn) {
-            navigator.navigateToDashboard()
+            navigator.navigateToRidesScreen()
         } else {
-            navigator.navigateToDashboard()
+            navigator.navigateToRidesScreen()
         }
     }
 

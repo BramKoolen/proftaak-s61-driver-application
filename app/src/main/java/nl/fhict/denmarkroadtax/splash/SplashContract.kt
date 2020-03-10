@@ -10,7 +10,7 @@ interface SplashContract {
 
     interface Navigator {
 
-        fun navigateToDashboard()
+        fun navigateToRidesScreen()
         fun navigateToLoginScreen()
     }
 }
