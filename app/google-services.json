@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "703127911024",
+    "firebase_url": "https://denmark-road-tax.firebaseio.com",
+    "project_id": "denmark-road-tax",
+    "storage_bucket": "denmark-road-tax.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703127911024:android:0abdef6a6715043fdf52b5",
+        "android_client_info": {
+          "package_name": "nl.fhict.denmarkroadtax"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703127911024-9df9tkckpn8vt5eedjo166op56mjmkb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa7FpRysSu3iW1hTGAYhY0oPm0RRLiI-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703127911024-9df9tkckpn8vt5eedjo166op56mjmkb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703127911024:android:874274696288214ddf52b5",
+        "android_client_info": {
+          "package_name": "nl.fhict.denmarkroadtax.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703127911024-9df9tkckpn8vt5eedjo166op56mjmkb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa7FpRysSu3iW1hTGAYhY0oPm0RRLiI-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703127911024-9df9tkckpn8vt5eedjo166op56mjmkb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703127911024:android:4330a944975373d6df52b5",
+        "android_client_info": {
+          "package_name": "nl.fhict.denmarkroadtax.qaTest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703127911024-9df9tkckpn8vt5eedjo166op56mjmkb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa7FpRysSu3iW1hTGAYhY0oPm0RRLiI-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703127911024-9df9tkckpn8vt5eedjo166op56mjmkb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
