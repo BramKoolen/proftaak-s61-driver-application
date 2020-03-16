@@ -106,9 +106,6 @@ dependencies {
     // Google maps
     implementation "com.google.android.gms:play-services-location:$gms_version"
     implementation "com.google.android.gms:play-services-places:$gms_version"
-
-    // ViewPager
-    implementation "biz.laenger.android:vpbs:0.0.6"
 }
 
 /**

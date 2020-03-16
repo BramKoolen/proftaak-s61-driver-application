@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import biz.laenger.android.vpbs.BottomSheetUtils
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
@@ -14,7 +13,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.bottomsheet_rides.*
 import nl.fhict.denmarkroadtax.R
-import nl.fhict.denmarkroadtax.rides.bottomsheet.RidesBottomSheetTest
+import nl.fhict.denmarkroadtax.rides.bottomsheet.RidesBottomSheetAdapter
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -25,15 +24,11 @@ class RidesFragment : DaggerFragment(), OnMapReadyCallback, RidesContract.View {
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
-    /*private val ridesBottomSheetAdapter by lazy {
+    private val ridesBottomSheetAdapter by lazy {
         RidesBottomSheetAdapter().apply {
             onPreviousDayClicked = presenter::onPreviousDayClicked
             onNextDayClicked = presenter::onNextDayClicked
         }
-    }*/
-
-    private val ridesBottomSheetAdapter by lazy {
-        RidesBottomSheetTest()
     }
 
     private var map: GoogleMap? = null
@@ -52,10 +47,7 @@ class RidesFragment : DaggerFragment(), OnMapReadyCallback, RidesContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        bottomSheetRidesViewPager.adapter = RidesBottomSheetTest()
-        BottomSheetUtils.setupViewPager(bottomSheetRidesViewPager)
-
-        /*bottomSheetBehavior = BottomSheetBehavior.from<ConstraintLayout>(bottomSheetRides)
+        bottomSheetBehavior = BottomSheetBehavior.from<ConstraintLayout>(bottomSheetRides)
         bottomSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -64,7 +56,7 @@ class RidesFragment : DaggerFragment(), OnMapReadyCallback, RidesContract.View {
 
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 Timber.i("hello")
-                when (newState) {
+                /*when (newState) {
                     BottomSheetBehavior.STATE_COLLAPSED -> {
                         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
                     }
@@ -78,9 +70,14 @@ class RidesFragment : DaggerFragment(), OnMapReadyCallback, RidesContract.View {
                         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
                     }
                     else ->{}
-                }
+                }*/
             }
-        })*/
+        })
+
+        bottomSheetRidesViewPager.apply {
+            (getChildAt(0) as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            adapter = ridesBottomSheetAdapter
+        }
     }
 
     override fun onResume() {
@@ -105,7 +102,11 @@ class RidesFragment : DaggerFragment(), OnMapReadyCallback, RidesContract.View {
 
     override fun showPreviousPage() {
         val index = bottomSheetRidesViewPager.currentItem
-        bottomSheetRidesViewPager.currentItem = (index - 1)
+        if (index != 0) {
+            bottomSheetRidesViewPager.currentItem = (index - 1)
+        }else {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        }
     }
 
     override fun showNextPage() {
