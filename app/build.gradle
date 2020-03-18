@@ -106,6 +106,9 @@ dependencies {
     // Google maps
     implementation "com.google.android.gms:play-services-location:$gms_version"
     implementation "com.google.android.gms:play-services-places:$gms_version"
+
+    // Joda time
+    implementation "joda-time:joda-time:$joda_time_version"
 }
 
 /**

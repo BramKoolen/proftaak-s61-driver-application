@@ -16,6 +16,9 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$reactive_x_version_java"
     implementation "io.reactivex.rxjava2:rxkotlin:$reactive_x_version_kotlin"
     implementation "io.reactivex.rxjava2:rxandroid:$reactive_x_version_android"
+
+    // Joda time
+    implementation "joda-time:joda-time:$joda_time_version"
 }
 
 sourceCompatibility = "8"

@@ -11,6 +11,17 @@ android {
         versionName version_name
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildTypes {
+        debug {
+            buildConfigField 'String', 'API_BASE_URL', '"https://todo"'//TODO
+        }
+        qaTest {
+            buildConfigField 'String', 'API_BASE_URL', '"https://todo"'//TODO
+        }
+        release {
+            buildConfigField 'String', 'API_BASE_URL', '"https://todo"'//TODO
+        }
+    }
 }
 
 dependencies {
@@ -40,6 +51,22 @@ dependencies {
 
     // Timber
     implementation "com.jakewharton.timber:timber:$timber_version"
+
+    // Retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    api 'com.squareup.okhttp3:logging-interceptor:4.2.0'
+
+    // Room
+    api "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava2:$room_version"
+    implementation 'com.amitshekhar.android:debug-db:1.0.6'
+
+    // Joda time
+    implementation "joda-time:joda-time:$joda_time_version"
 }
 
 sourceCompatibility = "7"

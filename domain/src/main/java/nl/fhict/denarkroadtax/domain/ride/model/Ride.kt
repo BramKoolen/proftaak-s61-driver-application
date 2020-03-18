@@ -1,9 +1,10 @@
-package nl.fhict.denmarkroadtax.rides
+package nl.fhict.denarkroadtax.domain.ride.model
 
-import nl.fhict.denarkroadtax.domain.ride.model.RideAddressType
+import org.joda.time.DateTime
 
-data class RideViewModel(
+data class Ride(
     val id: Int,
+    val date: DateTime,
     val startTitle: String,
     val startAddress: String,
     val startTime: String,

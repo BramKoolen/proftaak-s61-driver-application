@@ -6,7 +6,7 @@ import android.view.View.GONE
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.list_item_bottomsheet_rides.view.*
-import nl.fhict.denarkroadtax.domain.ride.RideAddressType
+import nl.fhict.denarkroadtax.domain.ride.model.RideAddressType
 import nl.fhict.denmarkroadtax.R
 import nl.fhict.denmarkroadtax.rides.RideViewModel
 
