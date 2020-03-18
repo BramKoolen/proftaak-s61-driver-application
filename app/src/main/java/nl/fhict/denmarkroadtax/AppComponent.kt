@@ -3,6 +3,7 @@ package nl.fhict.denmarkroadtax
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
+import nl.fhict.denmarkroadtax.data.ride.RideModule
 import nl.fhict.denmarkroadtax.mainnavigation.MainNavigationActivityModule
 import nl.fhict.denmarkroadtax.splash.SplashActivityModule
 import javax.inject.Singleton
@@ -13,7 +14,8 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         AppModule::class,
         SplashActivityModule::class,
-        MainNavigationActivityModule::class
+        MainNavigationActivityModule::class,
+        RideModule::class
     ]
 )
 interface AppComponent : AndroidInjector<DenmarkRoadTaxApplication> {
