@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package nl.fhict.denmarkroadtax.rides
 
 import dagger.Binds
@@ -18,5 +20,8 @@ interface RidesModule {
 
         @Binds
         fun bindPresenter(ridesPresenter: RidesPresenter): RidesContract.Presenter
+
+        @Binds
+        fun bindStringProvider(rideStringProvider: RideStringProvider): RidesContract.StringProvider
     }
 }

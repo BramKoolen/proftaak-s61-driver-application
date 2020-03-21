@@ -4,10 +4,10 @@ import org.joda.time.DateTime
 
 data class RideRecapOfDay(
     val date: DateTime,
-    val costs: String,
-    val average: String,
-    val drivenKilometers: String,
-    val drivenRides: String,
+    val costs: Double,
+    val average: Double,
+    val drivenMeters: Int,
+    val drivenRides: Int,
     val rides: List<Ride>,
     val route: String,
     val isAllDataFinal: Boolean

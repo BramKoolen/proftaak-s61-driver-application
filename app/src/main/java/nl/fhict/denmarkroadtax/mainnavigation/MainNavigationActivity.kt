@@ -37,9 +37,9 @@ class MainNavigationActivity : DaggerAppCompatActivity(), HasSupportFragmentInje
 
             override fun onPageSelected(position: Int) {
                 when (position) {
-                    0 -> mainNavigationBottomNav.selectedItemId = R.id.mainNavigationBottomNavProfile
+                    0 -> mainNavigationBottomNav.selectedItemId = R.id.mainNavigationBottomNavInvoice
                     1 -> mainNavigationBottomNav.selectedItemId = R.id.mainNavigationBottomNavRides
-                    2 -> mainNavigationBottomNav.selectedItemId = R.id.mainNavigationBottomNavInvoice
+                    2 -> mainNavigationBottomNav.selectedItemId = R.id.mainNavigationBottomNavMore
                 }
             }
         })
@@ -49,7 +49,7 @@ class MainNavigationActivity : DaggerAppCompatActivity(), HasSupportFragmentInje
         mainNavigationBottomNav.selectedItemId = R.id.mainNavigationBottomNavRides
         mainNavigationBottomNav.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.mainNavigationBottomNavProfile -> {
+                R.id.mainNavigationBottomNavInvoice -> {
                     mainNavigationViewPager.currentItem = 0
                     true
                 }
@@ -57,7 +57,7 @@ class MainNavigationActivity : DaggerAppCompatActivity(), HasSupportFragmentInje
                     mainNavigationViewPager.currentItem = 1
                     true
                 }
-                R.id.mainNavigationBottomNavInvoice -> {
+                R.id.mainNavigationBottomNavMore -> {
                     mainNavigationViewPager.currentItem = 2
                     true
                 }

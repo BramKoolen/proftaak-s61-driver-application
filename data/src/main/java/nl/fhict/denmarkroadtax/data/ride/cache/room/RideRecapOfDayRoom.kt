@@ -10,13 +10,13 @@ data class RideRecapOfDayRoom(
     @ColumnInfo(name = "date")
     val date: String,
     @ColumnInfo(name = "costs")
-    val costs: String,
+    val costs: Double,
     @ColumnInfo(name = "average")
-    val average: String,
-    @ColumnInfo(name = "drivenKilometers")
-    val drivenKilometers: String,
+    val average: Double,
+    @ColumnInfo(name = "drivenMeters")
+    val drivenMeters: Int,
     @ColumnInfo(name = "drivenRides")
-    val drivenRides: String,
+    val drivenRides: Int,
     @ColumnInfo(name = "route")
     val route: String,
     @ColumnInfo(name = "isAllDataFinal")

@@ -5,7 +5,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import nl.fhict.denmarkroadtax.invoice.InvoiceModule
-import nl.fhict.denmarkroadtax.profile.ProfileModule
+import nl.fhict.denmarkroadtax.more.MoreModule
 import nl.fhict.denmarkroadtax.rides.RidesModule
 
 @Module
@@ -15,7 +15,7 @@ interface MainNavigationActivityModule {
         modules = [
             Bindings::class,
             InvoiceModule::class,
-            ProfileModule::class,
+            MoreModule::class,
             RidesModule::class
         ]
     )

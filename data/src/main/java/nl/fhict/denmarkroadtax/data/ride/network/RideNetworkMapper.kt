@@ -1,10 +1,12 @@
-package nl.fhict.denmarkroadtax.data.ride.netwerk
+package nl.fhict.denmarkroadtax.data.ride.network
 
 import nl.fhict.denarkroadtax.domain.ride.model.Ride
 import nl.fhict.denarkroadtax.domain.ride.model.RideAddressType
 import nl.fhict.denarkroadtax.domain.ride.model.RideRecapOfDay
-import nl.fhict.denmarkroadtax.data.ride.netwerk.response.RideRecapFromDayResponse
-import nl.fhict.denmarkroadtax.data.ride.netwerk.response.RideResponse
+import nl.fhict.denmarkroadtax.data.ride.network.response.RideRecapFromDayResponse
+import nl.fhict.denmarkroadtax.data.ride.network.response.RideResponse
+import org.joda.time.DateTime
+import org.joda.time.format.DateTimeFormat
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -13,10 +15,10 @@ class RideNetworkMapper @Inject constructor() {
     fun mapToRideRecapOfDay(rideRecapFromDayResponse: RideRecapFromDayResponse): RideRecapOfDay {
         with(rideRecapFromDayResponse) {
             return RideRecapOfDay(
-                date,
+                mapStringToDate(date),
                 costs,
                 average,
-                drivenKilometers,
+                drivenMeters,
                 drivenRides,
                 rides.map { mapToRide(it) },
                 route,
@@ -29,14 +31,14 @@ class RideNetworkMapper @Inject constructor() {
         with(rideResponse) {
             return Ride(
                 id,
-                date,
+                mapStringToDate(date),
                 startTitle,
                 startAddress,
-                startTime,
+                mapStringToTimeStamp(startTime),
                 endTitle,
                 endAddress,
-                endTime,
-                drivenKilometers,
+                mapStringToTimeStamp(endTime),
+                drivenMeters,
                 drivenTime,
                 mapStringToRideAddressType(rideAddressType)
             )
@@ -50,5 +52,13 @@ class RideNetworkMapper @Inject constructor() {
             Timber.e(e)
             RideAddressType.STOPOVER
         }
+    }
+
+    private fun mapStringToDate(stringDate: String): DateTime {
+        return DateTimeFormat.forPattern("dd/MM/yyyy").parseDateTime(stringDate)
+    }
+
+    private fun mapStringToTimeStamp(stringTimeStamp: String): DateTime {
+        return DateTimeFormat.forPattern("HH:mm").parseDateTime(stringTimeStamp)
     }
 }

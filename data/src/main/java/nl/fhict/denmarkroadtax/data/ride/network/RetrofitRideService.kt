@@ -1,9 +1,7 @@
-package nl.fhict.denmarkroadtax.data.ride.netwerk
+package nl.fhict.denmarkroadtax.data.ride.network
 
 import io.reactivex.Observable
-import io.reactivex.Single
-import nl.fhict.denmarkroadtax.data.ride.netwerk.response.RideRecapFromDayResponse
-import nl.fhict.denmarkroadtax.data.ride.netwerk.response.RideResponse
+import nl.fhict.denmarkroadtax.data.ride.network.response.RideRecapFromDayResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

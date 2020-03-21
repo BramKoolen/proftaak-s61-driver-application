@@ -19,7 +19,7 @@ class RideCacheMapper @Inject constructor() {
                     mapStringToDate(date),
                     costs,
                     average,
-                    drivenKilometers,
+                    drivenMeters,
                     drivenRides,
                     ridesFromDay?.let { it.map { mapToRide(it) } }?: emptyList(),
                     route,
@@ -36,7 +36,7 @@ class RideCacheMapper @Inject constructor() {
                 date.toString("dd/MM/yyyy"),
                 costs,
                 average,
-                drivenKilometers,
+                drivenMeters,
                 drivenRides,
                 route,
                 isAllDataFinal
@@ -51,11 +51,11 @@ class RideCacheMapper @Inject constructor() {
                 date.toString("dd/MM/yyyy"),
                 startTitle,
                 startAddress,
-                startTime,
+                startTime.toString("HH:mm"),
                 endTitle,
                 endAddress,
-                endTime,
-                drivenKilometers,
+                endTime.toString("HH:mm"),
+                drivenMeters,
                 drivenTime,
                 rideAddressType.toString()
             )
@@ -69,11 +69,11 @@ class RideCacheMapper @Inject constructor() {
                 mapStringToDate(date),
                 startTitle,
                 startAddress,
-                startTime,
+                mapStringToTimeStamp(startTime),
                 endTitle,
                 endAddress,
-                endTime,
-                drivenKilometers,
+                mapStringToTimeStamp(endTime),
+                drivenMeters,
                 drivenTime,
                 mapStringToRideAddressType(rideAddressType)
             )
@@ -91,5 +91,9 @@ class RideCacheMapper @Inject constructor() {
             Timber.e(e)
             RideAddressType.STOPOVER
         }
+    }
+
+    private fun mapStringToTimeStamp(stringTimeStamp: String): DateTime {
+        return DateTimeFormat.forPattern("HH:mm").parseDateTime(stringTimeStamp)
     }
 }

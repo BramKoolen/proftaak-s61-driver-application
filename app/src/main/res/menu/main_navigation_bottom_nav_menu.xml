@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/mainNavigationBottomNavProfile"
-        android:icon="@drawable/ic_account_circle"
-        android:title="@string/main_navigation_bottom_nav_profile_title"
+        android:id="@+id/mainNavigationBottomNavInvoice"
+        android:icon="@drawable/ic_description"
+        android:title="@string/main_navigation_bottom_nav_invoice"
         app:showAsAction ="ifRoom"/>
 
     <item
@@ -15,8 +15,8 @@
         app:showAsAction ="ifRoom"/>
 
     <item
-        android:id="@+id/mainNavigationBottomNavInvoice"
-        android:icon="@drawable/ic_description"
-        android:title="@string/main_navigation_bottom_nav_invoice"
+        android:id="@+id/mainNavigationBottomNavMore"
+        android:icon="@drawable/ic_menu"
+        android:title="@string/main_navigation_bottom_nav_more_title"
         app:showAsAction ="ifRoom"/>
 </menu>

@@ -5,10 +5,10 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-interface ProfileModule {
+interface MoreModule {
 
     @ContributesAndroidInjector(modules = [Bindings::class])
-    fun profileFragment(): MoreFragment
+    fun moreFragment(): MoreFragment
 
     @Module
     interface Bindings {
@@ -17,6 +17,6 @@ interface ProfileModule {
         fun bindView(moreFragment: MoreFragment): MoreContract.View
 
         @Binds
-        fun bindPresenter(profilePresenter: ProfilePresenter): MoreContract.Presenter
+        fun bindPresenter(morePresenter: MorePresenter): MoreContract.Presenter
     }
 }

@@ -6,7 +6,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import nl.fhict.denarkroadtax.domain.ride.data.RideRepository
-import nl.fhict.denmarkroadtax.data.ride.netwerk.RetrofitRideService
+import nl.fhict.denmarkroadtax.data.ride.network.RetrofitRideService
 import nl.fontys.denmarkroadtax.data.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

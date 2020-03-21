@@ -1,5 +1,7 @@
 package nl.fhict.denmarkroadtax.generic.dagger
 
-/**
- * BANANANANANANA
- */
+import javax.inject.Qualifier
+
+@Qualifier
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ApplicationContext

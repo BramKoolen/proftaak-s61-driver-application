@@ -4,7 +4,7 @@ import io.reactivex.Observable
 import nl.fhict.denarkroadtax.domain.ride.data.RideRepository
 import nl.fhict.denarkroadtax.domain.ride.model.RideRecapOfDay
 import nl.fhict.denmarkroadtax.data.ride.cache.RideCacheManager
-import nl.fhict.denmarkroadtax.data.ride.netwerk.RideNetworkManager
+import nl.fhict.denmarkroadtax.data.ride.network.RideNetworkManager
 import org.joda.time.DateTime
 import org.joda.time.LocalDate
 import javax.inject.Inject

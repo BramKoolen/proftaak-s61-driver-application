@@ -8,7 +8,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-interface SplashActivityModule {
+interface SplashModule {
 
     @ContributesAndroidInjector(modules = [Bindings::class])
     fun splashActivity(): SplashActivity

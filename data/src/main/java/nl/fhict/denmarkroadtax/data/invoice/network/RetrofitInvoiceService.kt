@@ -1,11 +1,11 @@
 package nl.fhict.denmarkroadtax.data.invoice.network
 
-import io.reactivex.Observable
+import io.reactivex.Single
 import nl.fhict.denmarkroadtax.data.invoice.network.response.InvoiceResponse
 import retrofit2.http.GET
 
-interface RetrofitInvoiceModule {
+interface RetrofitInvoiceService {
 
     @GET("api")//TODO
-    fun fetchInvoices(): Observable<InvoiceResponse>
+    fun fetchInvoices(): Single<List<InvoiceResponse>>
 }

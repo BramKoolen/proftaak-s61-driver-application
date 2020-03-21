@@ -1,4 +1,4 @@
-package nl.fhict.denmarkroadtax.data.ride.netwerk.response
+package nl.fhict.denmarkroadtax.data.ride.network.response
 
 import com.google.gson.annotations.SerializedName
 import org.joda.time.DateTime
@@ -6,19 +6,19 @@ import org.joda.time.DateTime
 data class RideRecapFromDayResponse(
 
     @SerializedName("date")
-    val date: DateTime,
+    val date: String,
 
     @SerializedName("costs")
-    val costs: String,
+    val costs: Double,
 
-    @SerializedName("average")
-    val average: String,
+    @SerializedName("costsAverage")
+    val average: Double,
 
-    @SerializedName("drivenKilometers")
-    val drivenKilometers: String,
+    @SerializedName("drivenMeters")
+    val drivenMeters: Int,
 
     @SerializedName("drivenRides")
-    val drivenRides: String,
+    val drivenRides: Int,
 
     @SerializedName("rides")
     val rides: List<RideResponse>,

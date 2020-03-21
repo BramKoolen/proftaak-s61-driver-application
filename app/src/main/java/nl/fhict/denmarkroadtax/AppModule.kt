@@ -9,10 +9,17 @@ import dagger.Module
 import dagger.Provides
 import nl.fhict.denmarkroadtax.data.generic.dagger.DataContext
 import nl.fhict.denmarkroadtax.data.generic.room.RoomDRTDatabase
+import nl.fhict.denmarkroadtax.generic.dagger.ApplicationContext
 import javax.inject.Singleton
 
 @Module(includes = [AppModule.Bindings::class])
 class AppModule {
+
+    @Provides
+    @ApplicationContext
+    fun provideApplicationContext(denmarkRoadTaxApplication: DenmarkRoadTaxApplication): Context {
+        return denmarkRoadTaxApplication.applicationContext
+    }
 
     @Provides
     @DataContext

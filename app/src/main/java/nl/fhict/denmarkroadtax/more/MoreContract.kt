@@ -1,6 +1,6 @@
-package nl.fhict.denmarkroadtax.profile
+package nl.fhict.denmarkroadtax.more
 
-interface ProfileContract {
+interface MoreContract {
 
     interface View {
 
