@@ -1,4 +1,4 @@
-package nl.fhict.denmarkroadtax.profile
+package nl.fhict.denmarkroadtax.more
 
 import dagger.Binds
 import dagger.Module
@@ -8,15 +8,15 @@ import dagger.android.ContributesAndroidInjector
 interface ProfileModule {
 
     @ContributesAndroidInjector(modules = [Bindings::class])
-    fun profileFragment(): ProfileFragment
+    fun profileFragment(): MoreFragment
 
     @Module
     interface Bindings {
 
         @Binds
-        fun bindView(profileFragment: ProfileFragment): ProfileContract.View
+        fun bindView(moreFragment: MoreFragment): MoreContract.View
 
         @Binds
-        fun bindPresenter(profilePresenter: ProfilePresenter): ProfileContract.Presenter
+        fun bindPresenter(profilePresenter: ProfilePresenter): MoreContract.Presenter
     }
 }
