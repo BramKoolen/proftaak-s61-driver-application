@@ -4,5 +4,6 @@ data class Invoice(
     val id: Long,
     val month: Int,
     val costs: Double,
-    val paymentStatus: InvoicePaymentStatus
+    val paymentStatus: InvoicePaymentStatus,
+    val url: String
 )

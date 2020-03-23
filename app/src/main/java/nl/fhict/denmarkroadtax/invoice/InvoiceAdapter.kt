@@ -58,6 +58,7 @@ class InvoiceAdapter : RecyclerView.Adapter<InvoiceAdapter.ViewHolder>() {
                         listItemInvoicePaymentStatus.setTextColor(ContextCompat.getColor(context, R.color.red))
                     }
                 }
+                setOnClickListener { onInvoiceClicked?.invoke(viewModel) }
             }
         }
     }

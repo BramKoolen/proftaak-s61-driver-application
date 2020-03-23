@@ -14,5 +14,8 @@ data class InvoiceResponse (
     val costs: Double,
 
     @SerializedName("paymentStatus")
-    val paymentStatus: String
+    val paymentStatus: String,
+
+    @SerializedName("url")
+    val url: String
 )

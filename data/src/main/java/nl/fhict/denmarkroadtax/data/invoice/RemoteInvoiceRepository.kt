@@ -6,7 +6,9 @@ import nl.fhict.denarkroadtax.domain.invoice.model.Invoice
 import nl.fhict.denarkroadtax.domain.invoice.model.InvoicePaymentStatus
 import nl.fhict.denmarkroadtax.data.invoice.network.InvoiceNetworkMapper
 import nl.fhict.denmarkroadtax.data.invoice.network.RetrofitInvoiceService
+import java.io.File
 import javax.inject.Inject
+
 
 class RemoteInvoiceRepository @Inject constructor(
     private val invoiceNetworkMapper: InvoiceNetworkMapper,
@@ -20,23 +22,31 @@ class RemoteInvoiceRepository @Inject constructor(
                     123455,
                     1,
                     56.12,
-                    InvoicePaymentStatus.PAID
+                    InvoicePaymentStatus.PAID,
+                    "https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf"
                 ),
                 Invoice(
                     12334567,
                     2,
                     78.56,
-                    InvoicePaymentStatus.OVERDUE
+                    InvoicePaymentStatus.OVERDUE,
+                    "https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf"
                 ),
                 Invoice(
                     321,
                     3,
                     32.76,
-                    InvoicePaymentStatus.NOTPAID
+                    InvoicePaymentStatus.NOTPAID,
+                    "https://github.github.com/training-kit/downloads/github-git-cheat-sheet.pdf"
                 )
             )
         )
         /*return retrofitInvoiceService.fetchInvoices()
             .map  { invoiceNetworkMapper.mapToInvoiceList(it) }*/
+    }
+
+
+    override fun fetchInvoicePdfFile(url: String): Single<File> {
+        return Single.error(Throwable())
     }
 }

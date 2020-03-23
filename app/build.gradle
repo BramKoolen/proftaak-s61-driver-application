@@ -109,6 +109,11 @@ dependencies {
 
     // Joda time
     implementation "joda-time:joda-time:$joda_time_version"
+
+    // PDF viewer
+    implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
+    implementation 'com.mindorks.android:prdownloader:0.6.0'
+
 }
 
 /**

@@ -41,7 +41,7 @@ class InvoicePresenter @Inject constructor(
     }
 
     override fun onInvoiceClicked(invoice: InvoiceViewModel) {
-        navigator.navigateToInvoiceDetail(invoice.invoiceId)
+        navigator.navigateToInvoicePdf(invoice)
     }
 
     override fun onErrorStateButtonClicked() {

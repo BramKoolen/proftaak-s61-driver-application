@@ -18,7 +18,8 @@ class InvoiceNetworkMapper @Inject constructor() {
                 id,
                 month,
                 costs,
-                mapStringToInvoicePaymentStatus(paymentStatus)
+                mapStringToInvoicePaymentStatus(paymentStatus),
+                url
             )
         }
     }

@@ -21,7 +21,7 @@ interface InvoiceContract {
 
     interface Navigator {
 
-        fun navigateToInvoiceDetail(invoiceId: String)
+        fun navigateToInvoicePdf(invoiceViewModel: InvoiceViewModel)
     }
 
     interface StringProvider {

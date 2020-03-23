@@ -15,7 +15,8 @@ class InvoiceMapper @Inject constructor(private val stringProvider: InvoiceContr
             invoice.id.toString(),
             "${stringProvider.invoiceTitle} ${stringProvider.invoiceMonth(invoice.month)}",
             "${stringProvider.invoiceCurrencieSymbol} ${invoice.costs}",
-            invoice.paymentStatus
+            invoice.paymentStatus,
+            invoice.url
         )
     }
 }
