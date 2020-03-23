@@ -7,11 +7,11 @@ data class Ride(
     val date: DateTime,
     val startTitle: String,
     val startAddress: String,
-    val startTime: String,
+    val startTime: DateTime,
     val endTitle: String,
     val endAddress: String,
-    val endTime: String,
-    val drivenKilometers: String,
-    val drivenTime: String,
+    val endTime: DateTime,
+    val drivenMeters: Int,
+    val drivenTime: Int,
     val rideAddressType: RideAddressType
 )

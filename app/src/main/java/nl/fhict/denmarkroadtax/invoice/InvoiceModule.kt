@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package nl.fhict.denmarkroadtax.invoice
 
 import dagger.Binds
@@ -18,5 +20,11 @@ interface InvoiceModule {
 
         @Binds
         fun bindPresenter(invoicePresenter: InvoicePresenter): InvoiceContract.Presenter
+
+        @Binds
+        fun bindNavigator(invoiceNavigator: InvoiceNavigator): InvoiceContract.Navigator
+
+        @Binds
+        fun bindStringProvider(invoiceStringProvider: InvoiceStringProvider): InvoiceContract.StringProvider
     }
 }

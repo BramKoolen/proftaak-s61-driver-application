@@ -1,8 +1,8 @@
-package nl.fhict.denmarkroadtax.profile
+package nl.fhict.denmarkroadtax.more
 
 import javax.inject.Inject
 
-class ProfilePresenter @Inject constructor() : ProfileContract.Presenter {
+class MorePresenter @Inject constructor() : MoreContract.Presenter {
 
     override fun startPresenting() {
         //TODO

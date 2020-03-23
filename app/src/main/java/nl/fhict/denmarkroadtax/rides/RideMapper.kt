@@ -4,16 +4,16 @@ import nl.fhict.denarkroadtax.domain.ride.model.Ride
 import nl.fhict.denarkroadtax.domain.ride.model.RideRecapOfDay
 import javax.inject.Inject
 
-class RideMapper @Inject constructor(){
+class RideMapper @Inject constructor(private val stringProvider: RidesContract.StringProvider){
 
     fun mapToRideRecapOfDayViewModel(rideRecapOfDay: RideRecapOfDay): RideRecapOfDayViewModel{
         with(rideRecapOfDay) {
             return RideRecapOfDayViewModel(
                 date.toString("dd/MM/yyyy"),
-                costs,
-                average,
-                drivenKilometers,
-                drivenRides,
+                "$costs ${stringProvider.rideCurrencie}",
+               "$average ${stringProvider.rideAverageEuroKm}",
+                "${drivenMeters/ 1000} ${stringProvider.rideDistanceKm}",
+                "$drivenRides ${stringProvider.rideRides} ",
                 rides.map { mapToRideViewModel(it) },
                 route
             )
@@ -26,12 +26,12 @@ class RideMapper @Inject constructor(){
                 id,
                 startTitle,
                 startAddress,
-                startTime,
+                startTime.toString("HH:mm"),
                 endTitle,
                 endAddress,
-                endTime,
-                drivenKilometers,
-                drivenTime,
+                endTime.toString("HH:mm"),
+                "${drivenMeters /1000} ${stringProvider.rideDistanceKm}",
+                "$drivenTime ${stringProvider.rideMin}",
                 rideAddressType
             )
         }

@@ -20,4 +20,13 @@ interface RidesContract {
         fun onPreviousDayClicked(int: Int)
         fun onNextDayClicked(int: Int)
     }
+
+    interface StringProvider {
+
+        val rideCurrencie: String
+        val rideAverageEuroKm: String
+        val rideDistanceKm: String
+        val rideRides: String
+        val rideMin: String
+    }
 }
