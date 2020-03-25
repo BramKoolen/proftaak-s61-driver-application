@@ -4,6 +4,7 @@ import com.downloader.PRDownloader
 import com.downloader.PRDownloaderConfig
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
+import nl.fhict.denmarkroadtax.di.DaggerAppComponent
 import timber.log.Timber
 
 class DenmarkRoadTaxApplication : DaggerApplication() {

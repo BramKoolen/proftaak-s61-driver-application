@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".invoice.pdf.InvoicePdfActivity"/>
+        <activity android:name=".login.LoginActivity"/>
+        <activity android:name=".invoice.pdf.InvoicePdfActivity" />
         <activity android:name=".mainnavigation.MainNavigationActivity" />
         <activity android:name=".splash.SplashActivity">
             <intent-filter>

@@ -2,6 +2,7 @@ package nl.fhict.denmarkroadtax.splash
 
 import android.app.Activity
 import android.content.Context
+import nl.fhict.denmarkroadtax.login.LoginActivity
 import nl.fhict.denmarkroadtax.mainnavigation.MainNavigationActivity
 import javax.inject.Inject
 
@@ -13,6 +14,7 @@ class SplashNavigator @Inject constructor(private val activity: Activity) : Spla
     }
 
     override fun navigateToLoginScreen() {
-        //TODO
+        activity.startActivity(LoginActivity.createIntent(activity))
+        activity.finish()
     }
 }

@@ -5,13 +5,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import nl.fhict.denarkroadtax.domain.settings.IsUserLoggedIn
+import nl.fhict.denarkroadtax.domain.account.IsLoginCredentialsValid
 import timber.log.Timber
 import javax.inject.Inject
 
 class SplashPresenter @Inject constructor(
     private val navigator: SplashContract.Navigator,
-    private val isUserLoggedIn: IsUserLoggedIn
+    private val isLoginCredentialsValid: IsLoginCredentialsValid
 ) : SplashContract.Presenter {
 
     private var compositeDisposable = CompositeDisposable()
@@ -33,7 +33,7 @@ class SplashPresenter @Inject constructor(
             }
 
             override fun onFinish() {
-                isUserLoggedIn()
+                isLoginCredentialsValid()
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(::isUserLoggedInSuccess, ::isUserLoggedInFailed)
@@ -46,7 +46,7 @@ class SplashPresenter @Inject constructor(
         if (isUserLoggedIn) {
             navigator.navigateToRidesScreen()
         } else {
-            navigator.navigateToRidesScreen()
+            navigator.navigateToLoginScreen()
         }
     }
 

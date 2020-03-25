@@ -114,6 +114,10 @@ dependencies {
     implementation 'com.github.barteksc:android-pdf-viewer:2.8.2'
     implementation 'com.mindorks.android:prdownloader:0.6.0'
 
+    // Chuck
+    debugImplementation "com.readystatesoftware.chuck:library:$chuck_version"
+    qaTestImplementation "com.readystatesoftware.chuck:library:$chuck_version"
+    releaseImplementation "com.readystatesoftware.chuck:library-no-op:$chuck_version"
 }
 
 /**

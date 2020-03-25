@@ -1,7 +1,7 @@
 package nl.fhict.denmarkroadtax.data.ride.network.response
 
 import com.google.gson.annotations.SerializedName
-import org.joda.time.DateTime
+import nl.fhict.denmarkroadtax.data.ride.network.response.RideResponse
 
 data class RideRecapFromDayResponse(
 
