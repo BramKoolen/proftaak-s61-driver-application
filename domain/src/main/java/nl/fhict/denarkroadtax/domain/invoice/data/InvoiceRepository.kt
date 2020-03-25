@@ -7,5 +7,4 @@ import java.io.File
 interface InvoiceRepository {
 
     fun fetchInvoices(): Single<List<Invoice>>
-    fun fetchInvoicePdfFile(url: String): Single<File>
 }

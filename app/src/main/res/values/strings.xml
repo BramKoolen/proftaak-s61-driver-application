@@ -24,9 +24,9 @@
     <string name="invoice_currencie_symbol">€</string>
 
     <!-- internet error state -->
-    <string name="internet_error_state_try_again_button">Probeer opnieuw</string>
+    <string name="internet_error_state_try_again_button">try again</string>
     <string name="internet_error_state_title">Whoops!</string>
-    <string name="internet_error_state_body">Er is geen internetverbinding. \n Controleer je verbinding en probeer opnieuw.</string>
+    <string name="internet_error_state_body">There is no internet connection. \n Please check your connection and try again.</string>
 
     <!-- ride -->
     <string name="ride_currencies_euro">euro</string>
@@ -34,4 +34,12 @@
     <string name="ride_distance_km">km</string>
     <string name="ride_rides">rides</string>
     <string name="ride_min">min</string>
+
+    <!-- login -->
+    <string name="login">login</string>
+    <string name="login_username_hint">Enter username</string>
+    <string name="login_password_hint">Enter password</string>
+    <string name="login_to_short_username_error">Sorry, your username is too short</string>
+    <string name="login_to_short_password_error">Sorry, your password is too short</string>
+    <string name="login_invalid_password">Sorry, your password is incorrect</string>
 </resources>

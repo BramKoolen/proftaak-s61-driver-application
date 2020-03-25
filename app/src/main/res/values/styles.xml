@@ -10,4 +10,8 @@
         <item name="android:background">@drawable/bg_invoice_payment_status_paid</item>
     </style>
 
+    <style name="EditText" parent="@style/Widget.AppCompat.EditText">
+        <item name="android:backgroundTint">@color/red</item>
+    </style>
+
 </resources>

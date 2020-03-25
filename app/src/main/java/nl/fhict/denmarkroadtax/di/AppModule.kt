@@ -1,12 +1,13 @@
 @file:Suppress("unused")
 
-package nl.fhict.denmarkroadtax
+package nl.fhict.denmarkroadtax.di
 
 import android.app.Application
 import android.content.Context
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
+import nl.fhict.denmarkroadtax.DenmarkRoadTaxApplication
 import nl.fhict.denmarkroadtax.data.generic.dagger.DataContext
 import nl.fhict.denmarkroadtax.data.generic.room.RoomDRTDatabase
 import nl.fhict.denmarkroadtax.generic.dagger.ApplicationContext

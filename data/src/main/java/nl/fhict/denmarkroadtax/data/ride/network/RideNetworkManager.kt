@@ -9,7 +9,7 @@ import org.joda.time.format.DateTimeFormat
 import javax.inject.Inject
 
 class RideNetworkManager @Inject constructor(
-    private val retrofitRideService: RetrofitRideService,
+    private val rideService: RideService,
     private val rideNetworkMapper: RideNetworkMapper
 ) {
 

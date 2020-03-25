@@ -5,14 +5,13 @@ import nl.fhict.denarkroadtax.domain.invoice.data.InvoiceRepository
 import nl.fhict.denarkroadtax.domain.invoice.model.Invoice
 import nl.fhict.denarkroadtax.domain.invoice.model.InvoicePaymentStatus
 import nl.fhict.denmarkroadtax.data.invoice.network.InvoiceNetworkMapper
-import nl.fhict.denmarkroadtax.data.invoice.network.RetrofitInvoiceService
-import java.io.File
+import nl.fhict.denmarkroadtax.data.invoice.network.InvoiceService
 import javax.inject.Inject
 
 
 class RemoteInvoiceRepository @Inject constructor(
     private val invoiceNetworkMapper: InvoiceNetworkMapper,
-    private val retrofitInvoiceService: RetrofitInvoiceService
+    private val invoiceService: InvoiceService
 ) : InvoiceRepository {
 
     override fun fetchInvoices(): Single<List<Invoice>> {
@@ -43,10 +42,5 @@ class RemoteInvoiceRepository @Inject constructor(
         )
         /*return retrofitInvoiceService.fetchInvoices()
             .map  { invoiceNetworkMapper.mapToInvoiceList(it) }*/
-    }
-
-
-    override fun fetchInvoicePdfFile(url: String): Single<File> {
-        return Single.error(Throwable())
     }
 }

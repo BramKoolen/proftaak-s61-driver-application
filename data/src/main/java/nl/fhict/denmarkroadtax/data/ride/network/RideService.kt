@@ -5,7 +5,7 @@ import nl.fhict.denmarkroadtax.data.ride.network.response.RideRecapFromDayRespon
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface RetrofitRideService {
+interface RideService {
 
     @GET("api")//TODO
     fun fetchRideRecapFromDay(@Query("results") userId: Int, date: String): Observable<RideRecapFromDayResponse>
