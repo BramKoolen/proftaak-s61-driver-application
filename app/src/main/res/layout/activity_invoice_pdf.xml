@@ -12,32 +12,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/grid_2"
         android:layout_marginTop="@dimen/grid_2"
+        android:backgroundTint="@color/redLight"
         android:src="@drawable/ic_arrow_back"
+        app:borderWidth="0dp"
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.github.barteksc.pdfviewer.PDFView
-        android:id="@+id/invoicePdfContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.github.barteksc.pdfviewer.PDFView>
+ <WebView
+     android:id="@+id/invoicePdfView"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"/>
 
-    <include
-        android:id="@+id/internetErrorStateView"
-        layout="@layout/view_internet_error_state"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible" />
-
-    <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/invoicePdfLoadingIndicator"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="parent"
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/invoicePdfFloatingPaymentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/grid_2"
+        android:layout_marginBottom="@dimen/grid_2"
+        android:backgroundTint="@color/redLight"
+        android:text="@string/invoice_pay_invoice"
+        app:fabSize="normal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="parent" />
+        tools:visibility="visible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
