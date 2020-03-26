@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class GetRideRecapFromDay @Inject constructor(private val rideRepository: RideRepository) {
 
-    operator fun invoke(userId: Int, date: DateTime): Observable<RideRecapOfDay> {
-        return rideRepository.fetchRideRecapFromDay(userId, date)
+    operator fun invoke(selectedDate: DateTime): Observable<List<RideRecapOfDay>> {
+        return rideRepository.fetchRideRecapFromDay(selectedDate)
     }
 }

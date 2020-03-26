@@ -13,5 +13,6 @@ data class Ride(
     val endTime: DateTime,
     val drivenMeters: Int,
     val drivenTime: Int,
-    val rideAddressType: RideAddressType
+    val rideAddressType: RideAddressType,
+    val route: String
 )

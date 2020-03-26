@@ -9,6 +9,5 @@ data class RideRecapOfDay(
     val drivenMeters: Int,
     val drivenRides: Int,
     val rides: List<Ride>,
-    val route: String,
     val isAllDataFinal: Boolean
 )

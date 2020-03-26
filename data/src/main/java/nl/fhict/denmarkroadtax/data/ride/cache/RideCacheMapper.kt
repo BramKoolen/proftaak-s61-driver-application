@@ -22,7 +22,6 @@ class RideCacheMapper @Inject constructor() {
                     drivenMeters,
                     drivenRides,
                     ridesFromDay?.let { it.map { mapToRide(it) } }?: emptyList(),
-                    route,
                     isAllDataFinal
                 )
             }
@@ -38,7 +37,6 @@ class RideCacheMapper @Inject constructor() {
                 average,
                 drivenMeters,
                 drivenRides,
-                route,
                 isAllDataFinal
             )
         }
@@ -57,7 +55,8 @@ class RideCacheMapper @Inject constructor() {
                 endTime.toString("HH:mm"),
                 drivenMeters,
                 drivenTime,
-                rideAddressType.toString()
+                rideAddressType.toString(),
+                route
             )
         }
     }
@@ -75,7 +74,8 @@ class RideCacheMapper @Inject constructor() {
                 mapStringToTimeStamp(endTime),
                 drivenMeters,
                 drivenTime,
-                mapStringToRideAddressType(rideAddressType)
+                mapStringToRideAddressType(rideAddressType),
+                route
             )
         }
     }

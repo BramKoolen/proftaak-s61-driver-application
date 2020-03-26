@@ -10,14 +10,10 @@ import nl.fhict.denmarkroadtax.rides.RideRecapOfDayViewModel
 
 class RidesBottomSheetAdapter : RecyclerView.Adapter<RidesBottomSheetAdapter.ViewHolder>() {
 
-    var rideRecapOfDayViewModels: List<RideRecapOfDayViewModel> = emptyList()
-        set(value) {
-            field = value
-            notifyDataSetChanged()
-        }
+    var rideRecapOfDayViewModels: MutableList<RideRecapOfDayViewModel> = mutableListOf()
 
-    var onPreviousDayClicked: ((Int) -> Unit)? = null
-    var onNextDayClicked: ((Int) -> Unit)? = null
+    var onPreviousDayClicked: ((RideRecapOfDayViewModel) -> Unit)? = null
+    var onNextDayClicked: ((RideRecapOfDayViewModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -40,17 +36,35 @@ class RidesBottomSheetAdapter : RecyclerView.Adapter<RidesBottomSheetAdapter.Vie
 
         fun bind(viewModel: RideRecapOfDayViewModel) {
             itemView.run {
-                bottomSheetRidesPeekCostsTodayLabel.text = viewModel.costs
-                bottomSheetRidesPeekCostPerKmLabel.text = viewModel.average
-                bottomSheetRidesPeekDrivenTodayLabel.text = viewModel.drivenKilometers
-                bottomSheetRidesPeekRidesTodayLabel.text = viewModel.drivenRides
+                if (viewModel.rides != null) {
+                    bottomSheetRidesContentLoadingIndicator.visibility = View.GONE
+                    bottomSheetRidesContentRecyclerView.visibility = View.VISIBLE
+                    bottomSheetRidesPeekContainerContent.visibility = View.VISIBLE
 
-                val ridesBottomSheetRideDetailsAdapter = RidesBottomSheetRideDetailsAdapter()
-                bottomSheetRidesContentRecyclerView.adapter = ridesBottomSheetRideDetailsAdapter
-                ridesBottomSheetRideDetailsAdapter.rideViewModels = viewModel.rides
+                    bottomSheetRidesPeekCostsTodayLabel.text = viewModel.costs
+                    bottomSheetRidesPeekCostPerKmLabel.text = viewModel.average
+                    bottomSheetRidesPeekDrivenTodayLabel.text = viewModel.drivenKilometers
+                    bottomSheetRidesPeekRidesTodayLabel.text = viewModel.drivenRides
 
-                bottomSheetRidesPeekLeftArrow.setOnClickListener { onPreviousDayClicked?.invoke(0) }
-                bottomSheetRidesPeekRightArrow.setOnClickListener { onNextDayClicked?.invoke(0) }
+                    val ridesBottomSheetRideDetailsAdapter = RidesBottomSheetRideDetailsAdapter()
+                    bottomSheetRidesContentRecyclerView.adapter = ridesBottomSheetRideDetailsAdapter
+                    ridesBottomSheetRideDetailsAdapter.rideViewModels = viewModel.rides
+
+                    bottomSheetRidesPeekLeftArrow.setOnClickListener {
+                        onPreviousDayClicked?.invoke(
+                            viewModel
+                        )
+                    }
+                    bottomSheetRidesPeekRightArrow.setOnClickListener {
+                        onNextDayClicked?.invoke(
+                            viewModel
+                        )
+                    }
+                }else{
+                    bottomSheetRidesContentLoadingIndicator.visibility = View.VISIBLE
+                    bottomSheetRidesContentRecyclerView.visibility = View.GONE
+                    bottomSheetRidesPeekContainerContent.visibility = View.GONE
+                }
             }
         }
     }

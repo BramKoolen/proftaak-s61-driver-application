@@ -23,9 +23,6 @@ data class RideRecapFromDayResponse(
     @SerializedName("rides")
     val rides: List<RideResponse>,
 
-    @SerializedName("route")
-    val route: String,
-
     @SerializedName("isAllDataFinal")
     val isAllDataFinal: Boolean
 )

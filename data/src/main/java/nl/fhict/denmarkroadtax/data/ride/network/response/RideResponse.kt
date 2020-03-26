@@ -36,5 +36,8 @@ data class RideResponse(
     val drivenTime: Int,
 
     @SerializedName("rideAddressType")
-    val rideAddressType: String
+    val rideAddressType: String,
+
+    @SerializedName("route")
+    val route : String
 )
