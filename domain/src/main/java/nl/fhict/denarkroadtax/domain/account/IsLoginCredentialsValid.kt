@@ -16,6 +16,6 @@ class IsLoginCredentialsValid @Inject constructor(
         } else {
             Single.just(false)
         }*/
-        return Single.just(false)//TODO delete
+        return Single.just(true)//TODO delete
     }
 }
