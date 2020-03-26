@@ -17,8 +17,6 @@ data class RideRecapOfDayRoom(
     val drivenMeters: Int,
     @ColumnInfo(name = "drivenRides")
     val drivenRides: Int,
-    @ColumnInfo(name = "route")
-    val route: String,
     @ColumnInfo(name = "isAllDataFinal")
     val isAllDataFinal: Boolean
 )

@@ -12,5 +12,6 @@ data class RideViewModel(
     val endTime: String,
     val drivenKilometers: String,
     val drivenTime: String,
-    val rideAddressType: RideAddressType
+    val rideAddressType: RideAddressType,
+    val route: String
 )

@@ -3,17 +3,39 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottomSheetRides"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bottomSheetRidesPeekContainer"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/bottomSheetRidesContentDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_2"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="26 maart 2020" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/bottomSheetRidesContentLoadingIndicator"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="@dimen/grid_1"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/bottomSheetRidesPeekLeftArrow"
@@ -35,84 +57,98 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/bottomSheetRidesPeekEuroSymbol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_4"
-            android:src="@drawable/ic_euro_symbol"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekLeftArrow"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bottomSheetRidesPeekCostDetailContainer"
+            android:id="@+id/bottomSheetRidesPeekContainerContent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_1"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomSheetRidesPeekEuroSymbol"
-            app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekEuroSymbol"
-            app:layout_constraintTop_toTopOf="@+id/bottomSheetRidesPeekEuroSymbol">
+            android:layout_marginBottom="@dimen/grid_1"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/bottomSheetRidesContentDate"
+            app:layout_constraintStart_toStartOf="@+id/bottomSheetRidesContentDate"
+            tools:visibility="visible">
 
-            <TextView
-                android:id="@+id/bottomSheetRidesPeekCostsTodayLabel"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bottomSheetRidesPeekCostDetailContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/bottomSheetRidesPeekCostPerKmLabel"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-
-                tools:text="12,57 euro" />
-
-            <TextView
-                android:id="@+id/bottomSheetRidesPeekCostPerKmLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bottomSheetRidesPeekCostsTodayLabel"
-                tools:text="0.12 euro/km" />
+                app:layout_constraintTop_toTopOf="parent">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/bottomSheetRidesPeekEuroSymbol"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_euro_symbol"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/bottomSheetRidesPeekCar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_4"
-            android:src="@drawable/ic_directions_car"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekCostDetailContainer"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/bottomSheetRidesPeekCostsTodayLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_1"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomSheetRidesPeekCostPerKmLabel"
+                    app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekEuroSymbol"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="12,57 euro" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/bottomSheetRidesPeekRidesDetailContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/grid_1"
-            app:layout_constraintBottom_toBottomOf="@+id/bottomSheetRidesPeekCar"
-            app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekCar"
-            app:layout_constraintTop_toTopOf="@+id/bottomSheetRidesPeekCar">
+                <TextView
+                    android:id="@+id/bottomSheetRidesPeekCostPerKmLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_1"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekEuroSymbol"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomSheetRidesPeekCostsTodayLabel"
+                    tools:text="0.12 euro/km" />
 
-            <TextView
-                android:id="@+id/bottomSheetRidesPeekDrivenTodayLabel"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/bottomSheetRidesPeekRidesDetailContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/bottomSheetRidesPeekRidesTodayLabel"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="16 km" />
-
-            <TextView
-                android:id="@+id/bottomSheetRidesPeekRidesTodayLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
+                android:layout_marginStart="@dimen/grid_4"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bottomSheetRidesPeekDrivenTodayLabel"
-                tools:text="4 rides" />
+                app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekCostDetailContainer"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/bottomSheetRidesPeekCar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_directions_car"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/bottomSheetRidesPeekRidesTodayLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_1"
+                    android:layout_marginTop="2dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekCar"
+                    app:layout_constraintTop_toBottomOf="@+id/bottomSheetRidesPeekDrivenTodayLabel"
+                    tools:text="4 rides" />
+
+                <TextView
+                    android:id="@+id/bottomSheetRidesPeekDrivenTodayLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/grid_1"
+                    app:layout_constraintBottom_toTopOf="@+id/bottomSheetRidesPeekRidesTodayLabel"
+                    app:layout_constraintStart_toEndOf="@+id/bottomSheetRidesPeekCar"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="16 km" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -136,14 +172,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/bottomSheetRidesContentRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:paddingTop="@dimen/grid_2"
-            android:overScrollMode="never"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_item_bottomsheet_rides" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bottomSheetRidesContentRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:overScrollMode="never"
+                android:paddingTop="@dimen/grid_2"
+                android:visibility="gone"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/list_item_bottomsheet_rides"
+                tools:visibility="visible" />
         </androidx.core.widget.NestedScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

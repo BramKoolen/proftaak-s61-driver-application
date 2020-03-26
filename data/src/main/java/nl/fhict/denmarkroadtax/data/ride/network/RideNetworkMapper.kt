@@ -21,7 +21,6 @@ class RideNetworkMapper @Inject constructor() {
                 drivenMeters,
                 drivenRides,
                 rides.map { mapToRide(it) },
-                route,
                 isAllDataFinal
             )
         }
@@ -40,7 +39,8 @@ class RideNetworkMapper @Inject constructor() {
                 mapStringToTimeStamp(endTime),
                 drivenMeters,
                 drivenTime,
-                mapStringToRideAddressType(rideAddressType)
+                mapStringToRideAddressType(rideAddressType),
+                route
             )
         }
     }

@@ -28,5 +28,7 @@ data class RideRoom(
     @ColumnInfo(name = "drivenTime")
     val drivenTime: Int,
     @ColumnInfo(name = "rideAddressType")
-    val rideAddressType: String
+    val rideAddressType: String,
+    @ColumnInfo(name = "route")
+    val route: String
 )

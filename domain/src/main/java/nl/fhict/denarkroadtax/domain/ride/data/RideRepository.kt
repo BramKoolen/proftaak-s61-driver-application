@@ -6,5 +6,5 @@ import org.joda.time.DateTime
 
 interface RideRepository {
 
-    fun fetchRideRecapFromDay(userId: Int, date: DateTime): Observable<RideRecapOfDay>
+    fun fetchRideRecapFromDay(selectedDate: DateTime): Observable<List<RideRecapOfDay>>
 }

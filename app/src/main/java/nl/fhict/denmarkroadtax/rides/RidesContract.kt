@@ -1,13 +1,11 @@
 package nl.fhict.denmarkroadtax.rides
 
-import org.joda.time.DateTime
-
 interface RidesContract {
 
     interface View {
 
         fun showRideRecapOfDayList(rideRecapOfDayViewModelList: List<RideRecapOfDayViewModel>)
-        fun showLoadingIndicator()
+        fun updateRideRecapOfDayList(rideRecapOfDayViewModelList: List<RideRecapOfDayViewModel>)
         fun showPreviousPage()
         fun showNextPage()
     }
@@ -15,10 +13,10 @@ interface RidesContract {
     interface Presenter {
 
         fun startPresenting()
-        fun getRideRecapFromDay(userId: Int, date: DateTime)
+        fun getRideRecapFromDay(rideRecapOfDayViewModel: RideRecapOfDayViewModel)
         fun stopPresenting()
-        fun onPreviousDayClicked(int: Int)
-        fun onNextDayClicked(int: Int)
+        fun onPreviousDayClicked(rideRecapOfDayViewModel: RideRecapOfDayViewModel)
+        fun onNextDayClicked(rideRecapOfDayViewModel: RideRecapOfDayViewModel)
     }
 
     interface StringProvider {

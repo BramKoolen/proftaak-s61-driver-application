@@ -14,8 +14,7 @@ class RideMapper @Inject constructor(private val stringProvider: RidesContract.S
                "$average ${stringProvider.rideAverageEuroKm}",
                 "${drivenMeters/ 1000} ${stringProvider.rideDistanceKm}",
                 "$drivenRides ${stringProvider.rideRides} ",
-                rides.map { mapToRideViewModel(it) },
-                route
+                rides.map { mapToRideViewModel(it) }
             )
         }
     }
@@ -32,7 +31,8 @@ class RideMapper @Inject constructor(private val stringProvider: RidesContract.S
                 endTime.toString("HH:mm"),
                 "${drivenMeters /1000} ${stringProvider.rideDistanceKm}",
                 "$drivenTime ${stringProvider.rideMin}",
-                rideAddressType
+                rideAddressType,
+                route
             )
         }
     }

@@ -14,35 +14,36 @@ class CachedRemoteRideRepository @Inject constructor(
     private val rideNetworkManager: RideNetworkManager
 ) : RideRepository {
 
-    override fun fetchRideRecapFromDay(userId: Int, date: DateTime): Observable<RideRecapOfDay> {
-        val rideRecapFromDayFromDatabase = getRideRecapFromDayFromLocalDatabase(date)
+        override fun fetchRideRecapFromDay(selectedDate: DateTime): Observable<List<RideRecapOfDay>> {
+            return getRideRecapFromDayFromNetwork(selectedDate)
+       /* val rideRecapFromDayFromDatabase = getRideRecapFromDayFromLocalDatabase(selectedDate)
         return if (rideRecapFromDayFromDatabase != null) {
-            if (isDateToday(date)) {
+            if (isDateToday(selectedDate)) {
                 if (rideCacheManager.isCacheValid(MAX_VALID_CACHE_TIME_MILLISECONDS)) {
-                    Observable.just(rideRecapFromDayFromDatabase)
+                    Observable.just(emptyList())
                 } else {
-                    getRideRecapFromDayFromNetwork(userId, date)
+                    getRideRecapFromDayFromNetwork(selectedDate)
                 }
             } else {
                 if (rideRecapFromDayFromDatabase.isAllDataFinal) {
-                    Observable.just(rideRecapFromDayFromDatabase)
+                    Observable.just(emptyList())
                 } else {
-                    getRideRecapFromDayFromNetwork(userId, date)
+                    getRideRecapFromDayFromNetwork(selectedDate)
                 }
             }
         } else {
-            getRideRecapFromDayFromNetwork(userId, date)
-        }
+            getRideRecapFromDayFromNetwork(selectedDate)
+        }*/
     }
 
     private fun getRideRecapFromDayFromLocalDatabase(date: DateTime): RideRecapOfDay? {
         return rideCacheManager.getRideRecapFromDay(date)
     }
 
-    private fun getRideRecapFromDayFromNetwork(userId: Int, date: DateTime): Observable<RideRecapOfDay> {
-        return rideNetworkManager.fetchRideRecapFromDay(userId, date).doOnNext {
-            rideCacheManager.deleteRideRecapFromDay(date)
-            saveRideRecapFromDayToLocalDatabase(it)
+    private fun getRideRecapFromDayFromNetwork(selectedDate: DateTime): Observable<List<RideRecapOfDay>> {
+        return rideNetworkManager.fetchRideRecapFromDay(selectedDate).doOnNext {
+            rideCacheManager.deleteRideRecapFromDay(selectedDate)
+            //saveRideRecapFromDayToLocalDatabase(it)
             rideCacheManager.lastRideUpdateInMillis = DateTime.now().millis
         }
     }
