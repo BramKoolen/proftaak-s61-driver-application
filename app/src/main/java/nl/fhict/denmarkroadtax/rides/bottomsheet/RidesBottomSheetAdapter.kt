@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.view_pager_item_bottomsheet_rides.view.*
 import nl.fhict.denmarkroadtax.R
+import nl.fhict.denmarkroadtax.generic.extension.convertToDate
 import nl.fhict.denmarkroadtax.rides.RideRecapOfDayViewModel
+import org.joda.time.DateTime
 
 class RidesBottomSheetAdapter : RecyclerView.Adapter<RidesBottomSheetAdapter.ViewHolder>() {
 
@@ -14,6 +16,7 @@ class RidesBottomSheetAdapter : RecyclerView.Adapter<RidesBottomSheetAdapter.Vie
 
     var onPreviousDayClicked: ((RideRecapOfDayViewModel) -> Unit)? = null
     var onNextDayClicked: ((RideRecapOfDayViewModel) -> Unit)? = null
+    var hideClicked: ((RideRecapOfDayViewModel) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -36,6 +39,12 @@ class RidesBottomSheetAdapter : RecyclerView.Adapter<RidesBottomSheetAdapter.Vie
 
         fun bind(viewModel: RideRecapOfDayViewModel) {
             itemView.run {
+                bottomSheetRidesContentDate.text = DateTime().convertToDate(viewModel.date).toString("dd MMMM yyyy")
+                bottomSheetRidesContentDate.setOnClickListener {
+                    hideClicked?.invoke(
+                        viewModel
+                    )
+                }
                 if (viewModel.rides != null) {
                     bottomSheetRidesContentLoadingIndicator.visibility = View.GONE
                     bottomSheetRidesContentRecyclerView.visibility = View.VISIBLE

@@ -1,6 +1,5 @@
 package nl.fhict.denmarkroadtax.rides
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -35,6 +34,7 @@ class RidesFragment : DaggerFragment(), RidesContract.View {
         RidesBottomSheetAdapter().apply {
             onPreviousDayClicked = presenter::onPreviousDayClicked
             onNextDayClicked = presenter::onNextDayClicked
+            hideClicked = {bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED}
         }
     }
 
@@ -57,6 +57,7 @@ class RidesFragment : DaggerFragment(), RidesContract.View {
         }
         mMapView?.getMapAsync { mMap ->
             map = mMap
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(DEFAULT_MAP_LOCATION, 12.0f))
         }
         return view
     }
@@ -139,19 +140,38 @@ class RidesFragment : DaggerFragment(), RidesContract.View {
         }
         ridesBottomSheetAdapter.notifyDataSetChanged()
         val index = ridesBottomSheetAdapter.rideRecapOfDayViewModels[bottomSheetRidesViewPager.currentItem]
-        index.rides?.let { zoomRoute(it) }
+        index.rides?.let { createRoute(it) }
     }
 
-    private fun zoomRoute(rides: List<RideViewModel>) {
+    private fun createRoute(rides: List<RideViewModel>) {
+        var lastColor = 1
+        var color: Int
+        val allEncodedRoutes = mutableListOf<LatLng>()
         rides.forEach {
-            val route = MapDecodeDirectionsPointsToLatLong(it.route)
+            if (lastColor == 1) {
+                color = context?.getColor(R.color.redLight) ?: 0
+                lastColor = 0
+            } else {
+                color = context?.getColor(R.color.red) ?: 1
+                lastColor = 1
+            }
+            val encodedRoute = MapDecodeDirectionsPointsToLatLong(it.route)
+            allEncodedRoutes.addAll(encodedRoute)
             val polyLineOptions = PolylineOptions().apply {
-                color(Color.BLUE)
+                color(color)
                 width(10f)
-                addAll(route)
+                addAll(encodedRoute)
             }
             map?.addPolyline(polyLineOptions)
         }
+
+        val boundsBuilder = LatLngBounds.Builder()
+        for (latLngPoint in allEncodedRoutes) boundsBuilder.include(latLngPoint)
+        val routePadding = 100
+        val latLngBounds = boundsBuilder.build()
+        map?.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, routePadding))
+
+
     }
 
     override fun showPreviousPage() {
