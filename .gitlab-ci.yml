@@ -24,33 +24,7 @@ before_script:
   - set -o pipefail
 
 stages:
-  - build
-#  - test
-#  - deploy
-
-#Clean project:
-#  stage: build
-#  tags:
-#    - build
-#  script:
-#    - ./gradlew clean
-#
-#Build project:
-#  stage: build
-#  tags:
-#    - build
-#  script:
-#    - ./gradlew assemble${buildTypeCommand}
-#  artifacts:
-#    paths:
-#      - app/build/outputs/
-#
-#test project:
-#  stage: test
-#  tags:
-#    - test
-#  script:
-#    - ./gradlew :app:test${buildTypeCommand}UnitTest
+  - deploy
 
 deploy project:
   stage: deploy
