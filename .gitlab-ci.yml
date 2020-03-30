@@ -4,7 +4,6 @@ variables:
   ANDROID_COMPILE_SDK: "29"
   ANDROID_BUILD_TOOLS: "29.0.3"
   ANDROID_SDK_TOOLS:   "4333796"
-  buildTypeCommand: "QaTest"
   GOOGLE_APPLICATION_CREDENTIALS: "app_distribution_account"
 
 before_script:
@@ -31,4 +30,4 @@ deploy project:
   tags:
     - deploy
   script:
-    - ./gradlew -a appDistributionUpload${buildTypeCommand}
+    - ./gradlew -a appDistributionUploadDebug
