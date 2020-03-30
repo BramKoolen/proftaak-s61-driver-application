@@ -22,23 +22,30 @@ before_script:
   - set -o pipefail
 
 stages:
+  - clean
   - build
   - test
 
-lintDebug:
-  stage: build
+clean project:
+  stage: clean
+  tags:
+    - clean
   script:
-    - ./gradlew -Pci --console=plain :app:lintDebug -PbuildDir=lint
+    - ./gradlew clean
 
-assembleDebug:
+build project:
   stage: build
+  tags:
+    - build
   script:
     - ./gradlew assembleDebug
   artifacts:
     paths:
       - app/build/outputs/
 
-debugTests:
+test project:
   stage: test
+  tags:
+    - test
   script:
     - ./gradlew -Pci --console=plain :app:testDebug
