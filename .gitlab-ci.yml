@@ -30,4 +30,5 @@ deploy project:
   tags:
     - deploy
   script:
+    - ./gradlew assembleDebug
     - ./gradlew -a appDistributionUploadDebug
