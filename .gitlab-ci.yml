@@ -22,16 +22,8 @@ before_script:
   - set -o pipefail
 
 stages:
-  - clean
   - build
   - test
-
-clean project:
-  stage: clean
-  tags:
-    - clean
-  script:
-    - ./gradlew clean
 
 build project:
   stage: build
