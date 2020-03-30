@@ -4,7 +4,6 @@ variables:
   ANDROID_COMPILE_SDK: "29"
   ANDROID_BUILD_TOOLS: "29.0.3"
   ANDROID_SDK_TOOLS:   "4333796"
-  GOOGLE_APPLICATION_CREDENTIALS: "app_distribution_account"
 
 before_script:
   - apt-get --quiet update --yes
@@ -16,6 +15,7 @@ before_script:
   - echo y | android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null
   - export ANDROID_HOME=$PWD/android-sdk-linux
   - export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/
+  - export GOOGLE_APPLICATION_CREDENTIALS=$app_distribution_account
   - chmod +x ./gradlew
   # temporarily disable checking for EPIPE error and use yes to accept all licenses
   - set +o pipefail
@@ -30,5 +30,5 @@ deploy project:
   tags:
     - deploy
   script:
-    - ./gradlew assembleDebug
-    - ./gradlew -a appDistributionUploadDebug
+    - ./gradlew assembleQaTest
+    - ./gradlew -a appDistributionUploadQaTest
