@@ -23,12 +23,49 @@ before_script:
   - set -o pipefail
 
 stages:
-  - deploy
+  - clean
+  - build
+  - test
+  - distribute
 
-deploy project:
-  stage: deploy
+clean project:
+  stage: clean
   tags:
-    - deploy
+    - clean
+  script:
+    - ./gradlew clean
+
+build project:
+  stage: build
+  tags:
+    - build
   script:
     - ./gradlew assembleQaTest
+  artifacts:
+    paths:
+      - app/build/outputs/
+
+test project:
+  stage: test
+  tags:
+    - test
+  script:
+    - ./gradlew -Pci --console=plain :app:testQatest
+
+distribute QaTest project:
+  stage: distribute
+  only:
+    - Development
+  tags:
+    - distribute
+  script:
     - ./gradlew -a appDistributionUploadQaTest
+
+distribute acceptance project:
+  stage: distribute
+  only:
+    - master
+  tags:
+    - distribute
+  script:
+    - ./gradlew -a appDistributionUploadAcceptance
