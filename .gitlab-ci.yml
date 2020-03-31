@@ -59,6 +59,7 @@ distribute QaTest project:
   tags:
     - distribute
   script:
+    - ./gradlew assembleQaTest
     - ./gradlew -a appDistributionUploadQaTest
 
 distribute acceptance project:
@@ -68,5 +69,5 @@ distribute acceptance project:
   tags:
     - distribute
   script:
-    - ./gradlew assembleQaTest
+    - ./gradlew assembleAcceptance
     - ./gradlew -a appDistributionUploadAcceptance
