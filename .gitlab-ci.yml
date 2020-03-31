@@ -68,4 +68,5 @@ distribute acceptance project:
   tags:
     - distribute
   script:
+    - ./gradlew assembleQaTest
     - ./gradlew -a appDistributionUploadAcceptance
