@@ -26,6 +26,7 @@ android {
             versionNameSuffix "-debug"
             applicationIdSuffix ".debug"
             resValue "string", "app_name", "${app_name + versionNameSuffix}"
+            manifestPlaceholders.mapskey = "AIzaSyCYhyPZXK4TrGu4iiAYc8sACuz8PQ6_4_A"
         }
         qaTest {
             signingConfig signingConfigs.debug
@@ -41,12 +42,13 @@ android {
             applicationIdSuffix ".qaTest"
 
             resValue "string", "app_name", "${app_name + versionNameSuffix}"
+            manifestPlaceholders.mapskey = "AIzaSyCYhyPZXK4TrGu4iiAYc8sACuz8PQ6_4_A"
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
 
             firebaseAppDistribution {
-                releaseNotes="Release notes test version"
-                groups = "s61-developers"
+                releaseNotes="release note for internal QA Test"
+                groups = "internal-qa-test"
             }
         }
         acceptance {
@@ -63,8 +65,14 @@ android {
             applicationIdSuffix ".acceptance"
 
             resValue "string", "app_name", "${app_name + versionNameSuffix}"
+            manifestPlaceholders.mapskey = "AIzaSyCYhyPZXK4TrGu4iiAYc8sACuz8PQ6_4_A"
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            firebaseAppDistribution {
+                releaseNotes="release note for External Acceptance Test"
+                groups = "external-acceptance-test"
+            }
         }
         release {
             debuggable false
@@ -73,6 +81,7 @@ android {
             useProguard true
 
             resValue "string", "app_name", "${app_name}"
+            manifestPlaceholders.mapskey = "AIzaSyCYhyPZXK4TrGu4iiAYc8sACuz8PQ6_4_A"
 
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

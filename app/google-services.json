@@ -21,7 +21,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCa7FpRysSu3iW1hTGAYhY0oPm0RRLiI-s"
+          "current_key": "AIzaSyB27AA9xHPunCSjqcEVpwVSABkYSNFD5vc"
         }
       ],
       "services": {
@@ -37,9 +37,9 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:703127911024:android:874274696288214ddf52b5",
+        "mobilesdk_app_id": "1:703127911024:android:e25cc2ab63b09a35df52b5",
         "android_client_info": {
-          "package_name": "nl.fhict.denmarkroadtax.debug"
+          "package_name": "nl.fhict.denmarkroadtax.acceptance"
         }
       },
       "oauth_client": [
@@ -50,7 +50,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCa7FpRysSu3iW1hTGAYhY0oPm0RRLiI-s"
+          "current_key": "AIzaSyB27AA9xHPunCSjqcEVpwVSABkYSNFD5vc"
         }
       ],
       "services": {
@@ -79,7 +79,7 @@
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCa7FpRysSu3iW1hTGAYhY0oPm0RRLiI-s"
+          "current_key": "AIzaSyB27AA9xHPunCSjqcEVpwVSABkYSNFD5vc"
         }
       ],
       "services": {
