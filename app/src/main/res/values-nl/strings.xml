@@ -32,8 +32,6 @@
     <string name="ride_currencies_euro">euro</string>
     <string name="ride_average_euro_km">euro/km</string>
     <string name="ride_rides">ritten</string>
-    <string name="ride_no_data_title">Niets</string>
-    <string name="ride_no_data_body">Je hebt deze dag geen ritten gemaakt.</string>
 
     <!-- login -->
     <string name="login_username_hint">Gebruikersnaam</string>

@@ -1,11 +1,8 @@
 package nl.fhict.denmarkroadtax.rides
 
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
-import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
-import nl.fhict.denarkroadtax.domain.GetLocalRideRecapFromDays
 import nl.fhict.denarkroadtax.domain.ride.GetRideRecapFromDay
 import nl.fhict.denmarkroadtax.generic.extension.convertToDate
 import nl.fhict.denmarkroadtax.generic.extension.dateString
@@ -13,60 +10,36 @@ import org.joda.time.DateTime
 import timber.log.Timber
 import javax.inject.Inject
 
-class RidesPresenter @Inject constructor(
-    private val view: RidesContract.View,
-    private val getRideRecapFromDay: GetRideRecapFromDay,
-    private val getLocalRideRecapFromDays: GetLocalRideRecapFromDays,
-    private val rideMapper: RideMapper
-) :
+class RidesPresenter @Inject constructor(private val view: RidesContract.View,
+                                         private val getRideRecapFromDay: GetRideRecapFromDay,
+                                         private val rideMapper: RideMapper) :
     RidesContract.Presenter {
 
-    private var compositeDisposable = CompositeDisposable()
+    private var disposable: Disposable? = null
 
     override fun startPresenting() {
         view.showRideRecapOfDayList(createDateList())
-        getLocalRideRecapFromDays()
     }
 
-    private fun getLocalRideRecapFromDays(){
-        getLocalRideRecapFromDays.invoke()
+    override fun getRideRecapFromDay(rideRecapOfDayViewModel: RideRecapOfDayViewModel){
+        disposable?.dispose()
+        disposable = getRideRecapFromDay.invoke(DateTime().convertToDate(rideRecapOfDayViewModel.date))
             .map { it.map { rideMapper.mapToRideRecapOfDayViewModel(it) } }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(::onLocalRideRecapFromDaysFetched, ::onLocalRideRecapFromDaysFetchedFailed)
-            .addTo(compositeDisposable)
+            .subscribe(::onRideRecapFromDayFetched, ::onRideRecapFromDayFetchedFailed)
     }
 
-    private fun onLocalRideRecapFromDaysFetched(rideRecapOfDayViewModelList: List<RideRecapOfDayViewModel>){
-        view.showRideRecapOfDayList(rideRecapOfDayViewModelList)
-    }
-
-    private fun onLocalRideRecapFromDaysFetchedFailed(throwable: Throwable){
-        Timber.i(throwable)
-    }
-
-    override fun getRideRecapFromDay(rideRecapOfDayViewModel: RideRecapOfDayViewModel) {
-            getRideRecapFromDay.invoke(DateTime().convertToDate(rideRecapOfDayViewModel.date))
-                .map { rideMapper.mapToRideRecapOfDayViewModel(it)}
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { onRideRecapFromDayFetched(it) },
-                    { onRideRecapFromDayFetchedFailed(it, rideRecapOfDayViewModel) })
-                .addTo(compositeDisposable)
-    }
-
-    private fun onRideRecapFromDayFetched(recapOfDayViewModel: RideRecapOfDayViewModel) {
+    private fun onRideRecapFromDayFetched(recapOfDayViewModel: List<RideRecapOfDayViewModel>){
         view.updateRideRecapOfDayList(recapOfDayViewModel)
     }
 
-    private fun onRideRecapFromDayFetchedFailed(throwable: Throwable, rideRecapOfDayViewModel: RideRecapOfDayViewModel) {
-        view.showErrorStateNoRidesForDate(rideRecapOfDayViewModel)
+    private fun onRideRecapFromDayFetchedFailed(throwable: Throwable){
         Timber.e(throwable)
     }
 
     override fun stopPresenting() {
-        compositeDisposable.clear()
+        disposable?.dispose()
     }
 
     override fun onPreviousDayClicked(rideRecapOfDayViewModel: RideRecapOfDayViewModel) {
@@ -74,24 +47,14 @@ class RidesPresenter @Inject constructor(
     }
 
     override fun onNextDayClicked(rideRecapOfDayViewModel: RideRecapOfDayViewModel) {
-        view.showNextPage()
+       view.showNextPage()
     }
 
-    private fun createDateList(): List<RideRecapOfDayViewModel> {
+    private fun createDateList(): List<RideRecapOfDayViewModel>{
         val rideRecapOfDayViewModelList = mutableListOf<RideRecapOfDayViewModel>()
-        for (i in 100 downTo 0) {
+        for ( i in 0..100){
             val date = DateTime.now().minusDays(i)
-            rideRecapOfDayViewModelList.add(
-                RideRecapOfDayViewModel(
-                    DateTime().dateString(date),
-                    null,
-                    null,
-                    null,
-                    null,
-                    null,
-                    true
-                )
-            )
+            rideRecapOfDayViewModelList.add(RideRecapOfDayViewModel(DateTime().dateString(date),null,null,null,null,null))
         }
         return rideRecapOfDayViewModelList
     }

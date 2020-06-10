@@ -35,8 +35,6 @@
     <string name="ride_distance_km" translatable="false">km</string>
     <string name="ride_rides">rides</string>
     <string name="ride_min" translatable="false">min</string>
-    <string name="ride_no_data_title">Nothing</string>
-    <string name="ride_no_data_body">You did not make any trips this day.</string>
 
     <!-- login -->
     <string name="login" translatable="false">login</string>

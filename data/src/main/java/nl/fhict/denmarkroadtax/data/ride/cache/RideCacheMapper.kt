@@ -12,25 +12,25 @@ import javax.inject.Inject
 
 class RideCacheMapper @Inject constructor() {
 
-    fun mapToRideRecapOfDay(
-        rideRecapOfDayRoom: RideRecapOfDayRoom,
-        ridesFromDay: List<RideRoom>
-    ): RideRecapOfDay {
-        with(rideRecapOfDayRoom) {
-            return RideRecapOfDay(
-                mapStringToDate(date),
-                costs,
-                average,
-                drivenMeters,
-                drivenRides,
-                ridesFromDay.map { mapToRide(it) },
-                isAllDataFinal
-            )
+    fun mapToRideRecapOfDay(rideRecapOfDayRoom: RideRecapOfDayRoom?, ridesFromDay: List<RideRoom>?): RideRecapOfDay? {
+        rideRecapOfDayRoom?.let {
+            with(rideRecapOfDayRoom) {
+                return RideRecapOfDay(
+                    mapStringToDate(date),
+                    costs,
+                    average,
+                    drivenMeters,
+                    drivenRides,
+                    ridesFromDay?.let { it.map { mapToRide(it) } }?: emptyList(),
+                    isAllDataFinal
+                )
+            }
         }
+        return null
     }
 
     fun mapToRoomRideRecapOfDay(rideRecapOfDay: RideRecapOfDay): RideRecapOfDayRoom {
-        with(rideRecapOfDay) {
+        with(rideRecapOfDay){
             return RideRecapOfDayRoom(
                 date.toString("dd/MM/yyyy"),
                 costs,
@@ -43,7 +43,7 @@ class RideCacheMapper @Inject constructor() {
     }
 
     fun mapToRoomRide(ride: Ride): RideRoom {
-        with(ride) {
+        with(ride){
             return RideRoom(
                 id,
                 date.toString("dd/MM/yyyy"),
