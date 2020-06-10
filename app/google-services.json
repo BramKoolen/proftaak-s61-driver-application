@@ -66,6 +66,35 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:703127911024:android:a04ca83ff9e0466adf52b5",
+        "android_client_info": {
+          "package_name": "nl.fhict.denmarkroadtax.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703127911024-9df9tkckpn8vt5eedjo166op56mjmkb7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB27AA9xHPunCSjqcEVpwVSABkYSNFD5vc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703127911024-9df9tkckpn8vt5eedjo166op56mjmkb7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:703127911024:android:4330a944975373d6df52b5",
         "android_client_info": {
           "package_name": "nl.fhict.denmarkroadtax.qaTest"

@@ -6,5 +6,6 @@ data class RideRecapOfDayViewModel(
     val average: String?,
     val drivenKilometers: String?,
     val drivenRides: String?,
-    val rides: List<RideViewModel>?
+    val rides: List<RideViewModel>?,
+    var isLoading: Boolean
 )

@@ -5,9 +5,10 @@ interface RidesContract {
     interface View {
 
         fun showRideRecapOfDayList(rideRecapOfDayViewModelList: List<RideRecapOfDayViewModel>)
-        fun updateRideRecapOfDayList(rideRecapOfDayViewModelList: List<RideRecapOfDayViewModel>)
+        fun updateRideRecapOfDayList(rideRecapOfDayViewModel: RideRecapOfDayViewModel)
         fun showPreviousPage()
         fun showNextPage()
+        fun showErrorStateNoRidesForDate(rideRecapOfDayViewModel: RideRecapOfDayViewModel)
     }
 
     interface Presenter {

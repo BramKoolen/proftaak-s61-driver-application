@@ -14,7 +14,8 @@ class RideMapper @Inject constructor(private val stringProvider: RidesContract.S
                "$average ${stringProvider.rideAverageEuroKm}",
                 "${drivenMeters/ 1000} ${stringProvider.rideDistanceKm}",
                 "$drivenRides ${stringProvider.rideRides} ",
-                rides.map { mapToRideViewModel(it) }
+                rides.map { mapToRideViewModel(it) },
+                false
             )
         }
     }

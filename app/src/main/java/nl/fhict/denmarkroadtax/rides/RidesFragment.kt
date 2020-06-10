@@ -1,5 +1,6 @@
 package nl.fhict.denmarkroadtax.rides
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,7 +35,7 @@ class RidesFragment : DaggerFragment(), RidesContract.View {
         RidesBottomSheetAdapter().apply {
             onPreviousDayClicked = presenter::onPreviousDayClicked
             onNextDayClicked = presenter::onNextDayClicked
-            hideClicked = {bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED}
+            hideClicked = { bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED }
         }
     }
 
@@ -121,28 +122,26 @@ class RidesFragment : DaggerFragment(), RidesContract.View {
 
     override fun showRideRecapOfDayList(rideRecapOfDayViewModelList: List<RideRecapOfDayViewModel>) {
         map?.moveCamera(CameraUpdateFactory.newLatLng(DEFAULT_MAP_LOCATION))
-        ridesBottomSheetAdapter.rideRecapOfDayViewModels =
-            rideRecapOfDayViewModelList.toMutableList()
+        ridesBottomSheetAdapter.rideRecapOfDayViewModels = rideRecapOfDayViewModelList.toMutableList()
         ridesBottomSheetAdapter.notifyDataSetChanged()
         bottomSheetRidesViewPager.currentItem = rideRecapOfDayViewModelList.size
     }
 
-    override fun updateRideRecapOfDayList(rideRecapOfDayViewModelList: List<RideRecapOfDayViewModel>) {
-        rideRecapOfDayViewModelList.forEach { newItem ->
-            ridesBottomSheetAdapter.rideRecapOfDayViewModels.forEachIndexed { index, oldItem ->
-                if (newItem.date == oldItem.date) {
-                    val itemIndex =
-                        ridesBottomSheetAdapter.rideRecapOfDayViewModels.size - (index + 1)
-                    ridesBottomSheetAdapter.rideRecapOfDayViewModels[itemIndex] = newItem
-                    return@forEachIndexed
-                }
+    override fun updateRideRecapOfDayList(rideRecapOfDayViewModel: RideRecapOfDayViewModel) {
+        ridesBottomSheetAdapter.rideRecapOfDayViewModels.forEachIndexed { index, oldItem ->
+            if (rideRecapOfDayViewModel.date == oldItem.date) {
+                ridesBottomSheetAdapter.rideRecapOfDayViewModels[index] = rideRecapOfDayViewModel
+                return@forEachIndexed
             }
+
         }
         ridesBottomSheetAdapter.notifyDataSetChanged()
-        val index = ridesBottomSheetAdapter.rideRecapOfDayViewModels[bottomSheetRidesViewPager.currentItem]
+        val index =
+            ridesBottomSheetAdapter.rideRecapOfDayViewModels[bottomSheetRidesViewPager.currentItem]
         index.rides?.let { createRoute(it) }
     }
 
+    @SuppressLint("NewApi")
     private fun createRoute(rides: List<RideViewModel>) {
         var lastColor = 1
         var color: Int
@@ -166,12 +165,10 @@ class RidesFragment : DaggerFragment(), RidesContract.View {
         }
 
         val boundsBuilder = LatLngBounds.Builder()
-        for (latLngPoint in allEncodedRoutes) boundsBuilder.include(latLngPoint)
-        val routePadding = 100
-        val latLngBounds = boundsBuilder.build()
-        map?.animateCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds, routePadding))
-
-
+        for (latLngPoint in allEncodedRoutes) {
+            boundsBuilder.include(latLngPoint)
+        }
+        map?.animateCamera(CameraUpdateFactory.newLatLngBounds(boundsBuilder.build(), 100))
     }
 
     override fun showPreviousPage() {
@@ -182,6 +179,10 @@ class RidesFragment : DaggerFragment(), RidesContract.View {
     override fun showNextPage() {
         val index = bottomSheetRidesViewPager.currentItem
         bottomSheetRidesViewPager.currentItem = (index + 1)
+    }
+
+    override fun showErrorStateNoRidesForDate(rideRecapOfDayViewModel: RideRecapOfDayViewModel) {
+        ridesBottomSheetAdapter.rideRecapOfDayViewModels.first { it.date == rideRecapOfDayViewModel.date }.isLoading = false
     }
 
     companion object {
